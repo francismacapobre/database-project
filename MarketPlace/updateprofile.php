@@ -33,11 +33,16 @@ echo '<tr><td align = "left">' . $row[0]
 $row[2] . '</td><td align = "left">' . $row[1] . '</td><td align = "left">';
 
 
+echo '<tr> <form action = "updateuser.php" method = post>';
+echo '<td align = "left"></td>';
+echo '<td align = "left"></td>';
+echo '<td align = "left"><input type = submit name = changeaddress value = Change Address> </td>' ;
 echo '</tr>';
-
 echo "</table>";
 
+
 }
+
 
 
 

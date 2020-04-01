@@ -45,6 +45,10 @@ if (isset($_POST['login'])){
             <input type = "submit" name = "updateprofile" value = "View/Update Profile"  >
             </form>';
             
+            echo '<form action = "deleteprofile.php" method = "post">
+            <input type = "submit" name = "deleteprofile" value = "Delete Profile"  >
+            </form>';
+            
         } else {
             echo "Invalid Username, please try again or create a new account";
            

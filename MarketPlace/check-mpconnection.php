@@ -1,7 +1,7 @@
 <?php
 include 'mpconnection.php';
 $conn = OpenCon();
-echo "Connected Successfully to Market Place";
+echo "<p>Connected Successfully to Market Place </p>";
 
 $query = "SELECT username FROM Customer1";
 $result = mysqli_query($conn,$query);
