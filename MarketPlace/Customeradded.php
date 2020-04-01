@@ -38,7 +38,7 @@ if (isset($_POST['csubmit'])){
         $affected_rows = mysqli_stmt_affected_rows($stmt);
 
         if ($affected_rows == 1){
-            echo 'Welcome!' ;
+            echo '<p>Welcome!</p>' ;
 
             mysqli_stmt_close($stmt);
 
@@ -101,11 +101,13 @@ if (isset($_POST['csubmit'])){
         $affected_rows2 = mysqli_stmt_affected_rows($stmt2);
 
         if ($affected_rows2 == 1){
-            echo $cname;
+            echo '</p>'.$cname.'</p>';
 
             mysqli_stmt_close($stmt2);
 
-            CloseCon($conn);
+            
+
+            
             
         } else {
             echo "Error Occurred in Customer 2";
@@ -113,7 +115,7 @@ if (isset($_POST['csubmit'])){
 
             mysqli_stmt_close($stmt2);
 
-            CloseCon($conn);
+            
         }
     } else {
 
@@ -123,6 +125,10 @@ if (isset($_POST['csubmit'])){
     
 
 }
+
+echo "<p>Redirecting to login page...</p>";
+header('refresh:3; url = http://localhost/select.php');
+CloseCon($conn);
 
 ?>
 

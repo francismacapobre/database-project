@@ -49,7 +49,6 @@ if (isset($_POST['ssubmit'])){
 
             mysqli_stmt_close($stmt);
 
-            CloseCon($conn);
 
         } else {
             echo "Error Occurred in Customer 1";
@@ -57,7 +56,6 @@ if (isset($_POST['ssubmit'])){
 
             mysqli_stmt_close($stmt);
 
-            CloseCon($conn);
         }
 
     } else {
@@ -67,6 +65,10 @@ if (isset($_POST['ssubmit'])){
     
 
 }
+
+echo "<p>Redirecting to login page...</p>";
+header('refresh:3; url = http://localhost/select.php');
+CloseCon($conn);
 
 
 ?>
