@@ -12,7 +12,7 @@ $conn = OpenCon();
 if (isset($_POST['adminsignin'])){
 
     echo '<p><form action = "project.php" method = "post">
-    Check for all the types of provided servces :  <input  type = "submit" name = "project" value = "Here">
+    Check for all the types of provided services :  <input  type = "submit" name = "project" value = "Here">
     </form></p>';
 
     echo '<p><form action = "agg.php" method = "post">
@@ -29,8 +29,9 @@ if (isset($_POST['adminsignin'])){
     List of satisfied Customers:  <input  type = "submit" name = "division" value = "Here">
     </form></p>';
 
-
-
+    echo '<p><form action = "join-query.php" method="post">
+    List of names of service providers who did not comeplete requests:<input type="submit" name ="join-query" value =
+    "Here"></form></p>';
 
 }
 
