@@ -1,3 +1,10 @@
+<html>
+<body>
+<h1> This page returns the names of all service providers who did not complete servest request</h1>
+<form action="join-query.php" method="post">
+    <input type="submit" class="button" name="go" value="go" />
+</form>
+
 <?php
 function myTable($obConn, $sql) 
 {
@@ -29,9 +36,17 @@ function myTable($obConn, $sql)
 }
 
 include 'mpconnection.php';
-$t1 = $_POST['t1'];
-$t2 = $_POST['t2'];
 $conn = OpenCon();
-$sql = "select * from $t1 NATURAL JOIN $t2";
-myTable($conn, $sql);
+$sql = "select ServiceProvider.name from DoesNotComplete NATURAL JOIN ServiceProvider";
+
+if (isset($_POST['go'])){
+   myTable($conn, $sql);
+}
+
 ?>
+
+</body>
+
+
+
+</html>
