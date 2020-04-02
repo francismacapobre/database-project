@@ -1,6 +1,6 @@
 <html>
 <head><title> Satisfied Customers</title></head>
-<h1>This pafe returns all customers who rated above 1</h1>
+<h1>This pafe returns all customers who rated above 3</h1>
 <form action="division.php" method="post">
     <input type="submit" class="button" name ="go" value="go"/>
 </form>
