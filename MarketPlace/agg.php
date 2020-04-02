@@ -1,47 +1,50 @@
 <html>
-<head><title> Worst Service Provider</title></head>
-
 <body>
+<h1> Cheapest service</h1>
+<form action="agg.php" method="post">
+    <input type="submit" class="button" name="WORST" value="WORST" />
+</form>
 
 
 <?php
-include "mpconnection.php";
-$conn = OpenCon();
+function get_table($conn, $sql) {
+    $result = mysqli_query($conn,$sql) or die(mySqli_error($conn));
 
-if (isset($_POST['agg'])){
+    if (mysqli_num_rows($result) > 0) {
+        echo "<table width=\"100%\" border=\"0\" cellspacing=\"2\"cellpadding=\"0\"><tr align=\"center\" bgcolor=\"#CCCCCC\">";
+        $i = 0;
+        while ($i < mysqli_num_fields($result)) {
+            $field = mysqli_fetch_field_direct($result, $i);
+            $fieldName=$field->name;
+            echo "<td><strong>$fieldName</strong></td>";
+            $i = $i + 1;
+        }
+    echo "</tr>";
 
-    $query = "SELECT averagerating.name, min(averagerating.value) from averagerating";
-        
-
-    $result = mysqli_query($conn,$query);
-
-
-    if (!$result) {
-        printf("Error: %s\n", mysqli_error($conn));
-        exit();
+    $bolWhite = true;
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo $bolWhite ? "<tr bgcolor=\"#CCCCCC\">" : "<tr bgcolor=\"#FFF\">";
+        $bolWhite=!$bolWhite; 
+        foreach($row as $data) {
+            echo "<td>$data</td>";
+        }
+        echo "</tr>";
     }
+    echo"</table>";
 
-    echo '<table align = "left" cellspacing = "10" cellpadding = "8">
-            <tr> 
-            <td align = left> <b> Service Provider Name </b> </td>
-            <td align = left> <b> Rating </b> </td>
-            <tr>';
-
-            while($row = mysqli_fetch_array($result)){      
-                echo '<tr><td align = "left">' . $row[0] . '</td><td align = "left">'
-                    . $row[1] . '</td><td align = "left">';
-                echo '</tr>';
-            }
-        
-
-            echo "</table>";
-
-
-
+    }
 }
 
 
-Closecon($conn)
+
+    include 'mpconnection.php';
+    $conn = OpenCon();
+    $sql = "SELECT ServiceType, min(Price) as soCheap from ProvidedService2";
+    
+    if (isset($_POST['WORST'])){
+        get_table($conn, $sql);
+    }
+
 ?>
 
 
