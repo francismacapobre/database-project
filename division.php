@@ -1,53 +1,52 @@
 <html>
 <head><title> Satisfied Customers</title></head>
-
-<body>
+<h1>This pafe returns all customers who rated above 1</h1>
+<form action="division.php" method="post">
+    <input type="submit" class="button" name ="go" value="go"/>
+</form>
 
 
 <?php
-include "mpconnection.php";
-$conn = OpenCon();
 
-if (isset($_POST['division'])){
+function get_table($conn, $sql) {
+    $result = mysqli_query($conn,$sql) or die(mySqli_error($conn));
+    if (mysqli_num_rows($result) > 0) {
+        echo "<table width=\"100%\" border=\"0\" cellspacing=\"2\"cellpadding=\"0\"><tr align=\"center\" bgcolor=\"#CCCCCC\">";
+        $i = 0;
+        while ($i < mysqli_num_fields($result)) {
+            $field = mysqli_fetch_field_direct($result, $i);
+            $fieldName=$field->name;
+            echo "<td><strong>$fieldName</strong></td>";
+            $i = $i + 1;
+        }
+    echo "</tr>";
 
-    $query = "SELECT customer2.name 
-    From customer1 left join customer2 on customer1.cardnumber = customer2.cardnumber
-    Where NOT EXISTS((select rating From review where rating > 1) 
-                    except  
-                    ( select rating from review where review.reviewerid = customer1.customerid))";
-
-
-    $result = mysqli_query($conn,$query);
-
-
-    if (!$result) {
-        printf("Error: %s\n", mysqli_error($conn));
-        exit();
+    $bolWhite = true;
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo $bolWhite ? "<tr bgcolor=\"#CCCCCC\">" : "<tr bgcolor=\"#FFF\">";
+        $bolWhite=!$bolWhite; 
+        foreach($row as $data) {
+            echo "<td>$data</td>";
+        }
+        echo "</tr>";
     }
-
-    echo '<table align = "left" cellspacing = "10" cellpadding = "8">
-            <tr> 
-            <td align = left> <b> Happy Customer </b> </td>
-            <tr>';
-
-            while($row = mysqli_fetch_array($result)){      
-                echo '<tr><td align = "left">' . $row[0] . '</td><td align = "left">';
-                echo '</tr>';
-            }
-        
-
-            echo "</table>";
-
-
-
-
+    echo"</table>";
+}
 }
 
 
-Closecon($conn)
+include "mpconnection.php";
+$conn = OpenCon();
+$sql = "Select Distinct c2.name from customer1 c1, customer2 c2
+ where c1.cardNumber = c2.cardNumber AND not exists 
+         ((Select ReviewerID from review where ReviewerID = c1.customerID)
+           Except (Select ReviewerID from review where rating > 3))";
+if (isset($_POST['go'])) {
+    get_table($conn, $sql);
+}
+
 ?>
 
-</body>
 
 
 </html>
