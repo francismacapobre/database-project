@@ -54,8 +54,9 @@ function get_table($conn, $sql) {
 
 include "mpconnection.php";
 $conn = OpenCon();
-$sql = "Select Distinct c2.name from customer1 c1, customer2 c2
- where c1.cardNumber = c2.cardNumber AND not exists 
+$sql = "Select Distinct c2.name from customer1 c1, customer2 c2, review r
+ where c1.cardNumber = c2.cardNumber AND r.ReviewerID = c1.customerID AND
+ not exists 
          ((Select ReviewerID from review where ReviewerID = c1.customerID)
            Except (Select ReviewerID from review where rating > 3))";
 if (isset($_POST['go'])) {
