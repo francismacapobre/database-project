@@ -55,7 +55,7 @@ function myTable($obConn, $sql)
 
 include 'mpconnection.php';
 $conn = OpenCon();
-$sql = "select ServiceProvider.name from DoesNotComplete NATURAL JOIN ServiceProvider";
+$sql = "select distinct ServiceProvider.name from DoesNotComplete NATURAL JOIN ServiceProvider";
 
 if (isset($_POST['go'])){
    myTable($conn, $sql);
