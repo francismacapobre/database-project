@@ -32,6 +32,11 @@ if (isset($_POST['adminsignin'])){
     echo '<p><form action = "join-query.php" method="post">
     List of names of service providers who did not comeplete requests:<input type="submit" name ="join-query" value =
     "Here"></form></p>';
+    
+    echo '<p><form action = "selection-query.html" method="post">
+    Choose service provider with the comment who got specific rating: <input type="submit" name ="selection-query" value =
+    "Here"> </form></p>';
+
 
 }
 
