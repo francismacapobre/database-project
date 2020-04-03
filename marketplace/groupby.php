@@ -38,21 +38,26 @@ if (isset($_POST['groupby'])){
         exit();
     }
 
-    echo '<table align = "center" cellspacing = "10" cellpadding = "8">
-            <tr> 
-            <td align = left> <b> Service Provider Name </b> </td>
-            <td align = left> <b> Average Rating </b> </td>
-            <tr>';
+        echo "<table width=\"100%\" border=\"0\" cellspacing=\"2\"cellpadding=\"0\"><tr align=\"center\" bgcolor=\"#CCCCCC\">";
+        $i = 0;
+        while ($i < mysqli_num_fields($result)) {
+            $field = mysqli_fetch_field_direct($result, $i);
+            $fieldName=$field->name;
+            echo "<td><strong>$fieldName</strong></td>";
+            $i = $i + 1;
+        }
+    echo "</tr>";
 
-            while($row = mysqli_fetch_array($result)){      
-                echo '<tr><td align = "left">' . $row[0] . '</td><td align = "left">'
-                    . $row[1] . '</td><td align = "left">';
-                echo '</tr>';
-            }
-        
-
-            echo "</table>";
-
+    $bolWhite = true;
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo $bolWhite ? "<tr bgcolor=\"#CCCCCC\">" : "<tr bgcolor=\"#FFF\">";
+        $bolWhite=!$bolWhite; 
+        foreach($row as $data) {
+            echo "<td>$data</td>";
+        }
+        echo "</tr>";
+    }
+    echo"</table>";
 
     
 }
