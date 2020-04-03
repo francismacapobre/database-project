@@ -35,7 +35,7 @@ if (isset($_POST['adminsignin'])){
 
 
     echo '<p><form action = "groupby.php" method = "post">
-    Services in Completion: <input  type = "submit" name = "groupby" value = "Here">
+    Average Rating for Each Service Provider: <input  type = "submit" name = "groupby" value = "Here">
     </form></p>';
 
 
