@@ -269,9 +269,14 @@ CREATE TABLE `review` (
 
 INSERT INTO `review` (`RevieweeID`, `ReviewerID`, `Rating`, `comment`) VALUES
 (4, 2, 4, NULL),
+(4, 3, 5, 'You are the best!'),
+(4, 4, 5, 'Amazing!'),
 (1, 3, 1, 'BAD SERVICE!'),
+(1, 4, 1, 'Please retire!'),
 (5, 3, NULL, 'decent'),
+(5, 4, 3, 'Not too bad'),
 (3, 4, 5, 'Great Job'),
+(2, 2, 1, 'Go home! Stop!'),
 (2, 5, 2, 'Terrible, never again!');
 
 -- --------------------------------------------------------
@@ -295,7 +300,7 @@ INSERT INTO `ServiceProvider` (`ServiceProviderID`, `name`, `BankAccount`, `Lang
 (1, 'Larry Hook', 3001, 'english'),
 (2, 'Mariam Lamar', 2123, 'english'),
 (3, 'Inca Lee', 4921, 'english'),
-(4, NULL, 3005, 'chinese'),
+(4, 'Dinara Francis Jenny', 3005, 'chinese'),
 (5, 'Charles Sakimoto', 1900, 'english'),
 (6, 'Jenny Zhang', 1111111111111111, 'English');
 
