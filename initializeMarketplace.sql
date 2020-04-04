@@ -267,11 +267,12 @@ CREATE TABLE `review` (
 -- Dumping data for table `review`
 --
 
-INSERT INTO `review` (`RevieweeID`, `ReviewerID`, `Rating`, `comment`) VALUES
-(2, 2, NULL, NULL),
-(1, 4, NULL, NULL),
-(1, 3, NULL, NULL),
-(3, 5, NULL, NULL),
+
+--INSERT INTO `review` (`RevieweeID`, `ReviewerID`, `Rating`, `comment`) VALUES
+--(2, 2, NULL, NULL),
+--(1, 4, NULL, NULL),
+--(1, 3, NULL, NULL),
+--(3, 5, NULL, NULL),
 
 
 
