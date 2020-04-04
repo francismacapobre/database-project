@@ -80,9 +80,7 @@ if (isset($_POST['login'])){
             </form>';
             
         } else {
-            echo "<p>Invalid Username. Please try again, or create a new account</p>";
-            echo "<p>Redirecting back to home page....</p>";
-            header('refresh:3; url = http://localhost/marketplace.php');
+            echo "Invalid Username. Please try again, or create a new account";
            
         }
 }

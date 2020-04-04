@@ -25,6 +25,10 @@ $conn = OpenCon();
 
 if (isset($_POST['adminsignin'])){
 
+    echo '<p><form action = "all-customer-info.php" method = "post">
+    Customer Records: <input  type = "submit" name = "project" value = "Here">
+    </form></p>';
+
     echo '<p><form action = "equipmentinfo.html" method = "post">
     Equipment Information: <input  type = "submit" name = "project" value = "Here">
     </form></p>';
