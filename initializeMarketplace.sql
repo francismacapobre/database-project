@@ -268,16 +268,12 @@ CREATE TABLE `review` (
 --
 
 INSERT INTO `review` (`RevieweeID`, `ReviewerID`, `Rating`, `comment`) VALUES
-(4, 2, 4, NULL),
-(4, 3, 5, 'You are the best!'),
-(4, 4, 5, 'Amazing!'),
-(1, 3, 1, 'BAD SERVICE!'),
-(1, 4, 1, 'Please retire!'),
-(5, 3, NULL, 'decent'),
-(5, 4, 3, 'Not too bad'),
-(3, 4, 5, 'Great Job'),
-(2, 2, 1, 'Go home! Stop!'),
-(2, 5, 2, 'Terrible, never again!');
+(2, 2, NULL, NULL),
+(1, 4, NULL, NULL),
+(1, 3, NULL, NULL),
+(3, 5, NULL, NULL),
+
+
 
 -- --------------------------------------------------------
 
