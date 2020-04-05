@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <style>
+            body {
+            background-color: linen;
+            }
+    
+            h1 {
+            color: maroon;
+            }
+    
+            button {
+                margin-left: 20px;
+            }
+        </style>
+    </head>
+
+<div style="text-align:center; padding-top:30px">
+<h1>Equipment Information</h1>
+<h4>Retrieve relevant equiptment information</h4>
+<body>
+
+<form action="equipmentinfo.php" method="GET">
+    <h3>Columns in EqipmentUses table are:</h3>
+    EquipmentID
+    </br>
+    ServiceID
+    </br>
+    EquipmentName
+    </br>
+    </br>
+    <label>Enter equipment information (columns) seperated by commas</label>
+    <input name="cust_cols" type="text" placeholder="Type here">
+    <br>
+    <br>
+    <input type="submit" value="Search">
+</form>
+
+
+</body>
+
+
+
+</div>
+
+
+
+</html>
