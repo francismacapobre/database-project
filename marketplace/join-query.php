@@ -16,11 +16,19 @@
 </head>
 
 <div style="text-align:center; padding-top:30px">
-<h1>Service Providers Incomplete Record</h1>
+<h1>Service Providers Complete Record</h1>
 <body>
-<h4> This retrieves the names of all service providers who have a record of incomplete services.</h4>
+<h4> This retrieves the names of all service providers who have a record of complete/incomplete services.</h4>
 <form action="join-query.php" method="post">
-    <input type="submit" class="button" name="go" value="Retrieve" />
+    <input type="submit" class="button" name="go" value="Retrieve Incomplete Record" />
+</form>
+
+<form action="join-query.php" method="post">
+    <input type="submit" class="button" name="inprogress" value="Retrieve Services In Progress" />
+</form>
+
+<form action="join-query.php" method="post">
+    <input type="submit" class="button" name="comp" value="Retrieve Complete Record" />
 </form>
 
 <?php
@@ -55,11 +63,26 @@ function myTable($obConn, $sql)
 
 include 'mpconnection.php';
 $conn = OpenCon();
-$sql = "select distinct ServiceProvider.name from DoesNotComplete NATURAL JOIN ServiceProvider";
+$text = "Completed";
+$text1 = "In Progress";
+$sql = "SELECT distinct ServiceProvider.name from DoesNotComplete NATURAL JOIN ServiceProvider";
+$sql2 = "SELECT distinct ServiceProvider.name from manages inner join completesservicerequest on manages.servicerequestid =  completesservicerequest.servicerequestid 
+INNER JOIN ServiceProvider on ServiceProvider.ServiceProviderid = completesservicerequest.ServiceProviderid where manages.currentstatus = '$text' ";
+$sql3 = "SELECT distinct ServiceProvider.name from manages inner join completesservicerequest on manages.servicerequestid =  completesservicerequest.servicerequestid 
+INNER JOIN ServiceProvider on ServiceProvider.ServiceProviderid = completesservicerequest.ServiceProviderid where manages.currentstatus = '$text1' ";
 
 if (isset($_POST['go'])){
    myTable($conn, $sql);
 }
+
+if (isset($_POST['inprogress'])){
+    myTable($conn, $sql3);
+ }
+ 
+if (isset($_POST['comp'])){
+   myTable($conn, $sql2);
+
+ }
 
 ?>
 
