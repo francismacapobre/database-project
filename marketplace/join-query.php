@@ -72,14 +72,17 @@ $sql3 = "SELECT distinct ServiceProvider.name from manages inner join completess
 INNER JOIN ServiceProvider on ServiceProvider.ServiceProviderid = completesservicerequest.ServiceProviderid where manages.currentstatus = '$text1' ";
 
 if (isset($_POST['go'])){
+    echo "INCOMPLETE RECORD";
    myTable($conn, $sql);
 }
 
 if (isset($_POST['inprogress'])){
+    echo "IN PROGRESS RECORD";
     myTable($conn, $sql3);
  }
  
 if (isset($_POST['comp'])){
+    echo "COMPLETED RECORD";
    myTable($conn, $sql2);
 
  }
