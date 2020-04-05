@@ -18,7 +18,8 @@
 <div style="text-align:center; padding-top:30px">
 <h1>Service Providers Complete Record</h1>
 <body>
-<h4> This retrieves the names of all service providers who have either a record of complete or incomplete services.</h4>
+<h4> This retrieves the names of all service providers who service are have either a record of complete or incomplete services.</h4>
+<h5> The status of service resuest is either "completed" or "in progress"</h1>
 <form action="join-query.php" method="post">
     <label for="statusl">Status of service request: </label>  
     <input type="text" id="status" name="statusl"><br><br>
