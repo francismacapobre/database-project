@@ -14,7 +14,7 @@
     </style></head>
 
 <div style="text-align:center; padding-top:30px">
-<h1>Update my Address</h1>
+<h1>Delete Account</h1>
 <body>
 
 <?php
