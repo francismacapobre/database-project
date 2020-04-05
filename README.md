@@ -11,3 +11,5 @@ This project was built with XAMPP, PHP, and MySQL.
 
 #### 3) Inside XAMPP, Manage Servers --> Run MySQL Database and Apache Web Server
 Open [http://localhost/marketplace.php](http://localhost/marketplace.php) to view it in the browser.
+
+#### 4) (For Demo) Under Administration: Average Rating for Each Service Provider, Satisfied Customers, Search Service Providers by Rating will not display any values initially. Once each transaction are rated, these three functions will result in a proper output.
