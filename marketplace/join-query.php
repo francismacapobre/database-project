@@ -18,17 +18,11 @@
 <div style="text-align:center; padding-top:30px">
 <h1>Service Providers Complete Record</h1>
 <body>
-<h4> This retrieves the names of all service providers who have a record of complete/incomplete services.</h4>
+<h4> This retrieves the names of all service providers who have either a record of complete or incomplete services.</h4>
 <form action="join-query.php" method="post">
-    <input type="submit" class="button" name="go" value="Retrieve Incomplete Record" />
-</form>
-
-<form action="join-query.php" method="post">
-    <input type="submit" class="button" name="inprogress" value="Retrieve Services In Progress" />
-</form>
-
-<form action="join-query.php" method="post">
-    <input type="submit" class="button" name="comp" value="Retrieve Complete Record" />
+    <label for="statusl">Status of service request: </label>  
+    <input type="text" id="status" name="statusl"><br><br>
+    <input type="submit" class="button" name="go" value="Retrieve Service Provider Record" />
 </form>
 
 <?php
@@ -63,29 +57,15 @@ function myTable($obConn, $sql)
 
 include 'mpconnection.php';
 $conn = OpenCon();
-$text = "Completed";
-$text1 = "In Progress";
-$sql = "SELECT distinct ServiceProvider.name from DoesNotComplete NATURAL JOIN ServiceProvider";
-$sql2 = "SELECT distinct ServiceProvider.name from manages inner join completesservicerequest on manages.servicerequestid =  completesservicerequest.servicerequestid 
-INNER JOIN ServiceProvider on ServiceProvider.ServiceProviderid = completesservicerequest.ServiceProviderid where manages.currentstatus = '$text' ";
-$sql3 = "SELECT distinct ServiceProvider.name from manages inner join completesservicerequest on manages.servicerequestid =  completesservicerequest.servicerequestid 
-INNER JOIN ServiceProvider on ServiceProvider.ServiceProviderid = completesservicerequest.ServiceProviderid where manages.currentstatus = '$text1' ";
 
 if (isset($_POST['go'])){
-    echo "INCOMPLETE RECORD";
+    $text = $_POST['statusl'];
+$sql = "SELECT distinct ServiceProvider.name from manages inner join completesservicerequest on manages.servicerequestid =  completesservicerequest.servicerequestid 
+INNER JOIN ServiceProvider on ServiceProvider.ServiceProviderid = completesservicerequest.ServiceProviderid where manages.currentstatus = '$text' ";
+
    myTable($conn, $sql);
 }
 
-if (isset($_POST['inprogress'])){
-    echo "IN PROGRESS RECORD";
-    myTable($conn, $sql3);
- }
- 
-if (isset($_POST['comp'])){
-    echo "COMPLETED RECORD";
-   myTable($conn, $sql2);
-
- }
 
 ?>
 
