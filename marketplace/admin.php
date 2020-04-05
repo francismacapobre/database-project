@@ -48,7 +48,7 @@ if (isset($_POST['adminsignin'])){
     </form></p>';
 
     echo '<p><form action = "join-query.php" method="post">
-    Service Providers with Record of Incompleteness: <input type="submit" name ="join-query" value =
+    Service Providers with Record of Completeness: <input type="submit" name ="join-query" value =
     "Here"></form></p>';
     
     echo '<p><form action = "selection-query.html" method="post">
