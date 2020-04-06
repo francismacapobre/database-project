@@ -15,7 +15,7 @@
 
 <div style="text-align:center; padding-top:30px">
 <body>
-<h1> New Service</h1>
+<h1> Update Service Price</h1>
 
 
 
