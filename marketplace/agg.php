@@ -15,8 +15,8 @@
 
 <div style="text-align:center; padding-top:30px">
 <body>
-<h1> Cheapest service</h1>
-<h4>Retrieve the cheapest service that is available.</h4>
+<h1> Cheapest service price</h1>
+<h4>Retrieve the price of cheapest service that is available.</h4>
 <form action="agg.php" method="post">
     <input type="submit" class="button" name="WORST" value="Retrieve" />
 </form>
