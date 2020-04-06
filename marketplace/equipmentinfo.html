@@ -17,7 +17,7 @@
 
 <div style="text-align:center; padding-top:30px">
 <h1>Equipment Information</h1>
-<h4>Retrieve relevant equiptment information</h4>
+<h4>Retrieve relevant equipment information</h4>
 <body>
 
 <form action="equipmentinfo.php" method="GET">
@@ -36,13 +36,16 @@
     <input type="submit" value="Search">
 </form>
 
-
 </body>
-
-
+<form action="equipmentinfoupdate.php" method="POST">
+    <h5>Update EquipmentName by EquipmentID</h5>
+    <label>Change the ID of the equipment with name: </label>
+    <input name="old_name" type="text" placeholder="Old name">
+    <label>to: </label>
+    <input name="new_id" type="text" placeholder="New ID">
+    <input type="submit" value="Enter">
+    <br>
+</form>
 
 </div>
-
-
-
 </html>
