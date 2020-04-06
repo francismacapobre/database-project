@@ -86,7 +86,5 @@ get_table($conn, "SELECT servicetype, price FROM providedservice2");
     }
 
   ?>
-
-
     </body>
 </html>

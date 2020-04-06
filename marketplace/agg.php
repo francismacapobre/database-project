@@ -59,7 +59,7 @@ function get_table($conn, $sql) {
     
     $conn = OpenCon();
 
-    $sql = "SELECT ServiceType, min(Price) from ProvidedService2";
+    $sql = "SELECT min(Price) as Price from ProvidedService2";
     
     if (isset($_POST['WORST'])){
         get_table($conn, $sql);
