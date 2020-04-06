@@ -1,5 +1,5 @@
 <html>
-    <head><style>
+<head><style>
         body {
         background-color: linen;
         }
@@ -15,18 +15,17 @@
 
 <div style="text-align:center; padding-top:30px">
 <body>
-<h1> Cheapest service</h1>
-<h4>Retrieve the cheapest service that is available.</h4>
-<form action="agg.php" method="post">
-    <input type="submit" class="button" name="WORST" value="Retrieve" />
-</form>
+<h1> New Service</h1>
 
-<form action="agg2.php" method="post">
-    <input type="submit" class="button" name="insertnewservice" value="Update Service Price" />
-</form>
 
+
+<form action= "agg2.php" method = "post"> Service Type:  
+<input type= "text"  name= "typetype" placeholder="Enter" required="required" /> 
+   Value: <input type= "text" name="valuevalue" placeholder=Enter required="required" /> <input type=submit name=xxx value=Enter />
+  </form>
 
 <?php
+
 function get_table($conn, $sql) {
     $result = mysqli_query($conn,$sql) or die(mySqli_error($conn));
 
@@ -55,22 +54,46 @@ function get_table($conn, $sql) {
     }
 }
 
-    include 'mpconnection.php';
-    
-    $conn = OpenCon();
 
-    $sql = "SELECT ServiceType, min(Price) as Price from ProvidedService2";
+
+include 'mpconnection.php';
     
-    if (isset($_POST['WORST'])){
-        get_table($conn, $sql);
+$conn = OpenCon();
+
+get_table($conn, "SELECT servicetype, price FROM providedservice2");
+
+
+    
+    if (isset($_POST['xxx'])){
+     
+        $servicetype = @$_POST['typetype'];
+        
+        $price = @$_POST['valuevalue'];
+
+        $sql = "UPDATE providedservice2 set providedservice2.price = '$price'
+        where providedservice2.servicetype =  '$servicetype' ";
+
+
+        if (mysqli_query($conn, $sql)) {
+            echo "<p>Record updated successfully</p>";
+            echo "<p>Redirecting ...</p>";
+            header('refresh:3; url = http://localhost/agg.php');
+        } else {
+            echo "Error updating record: " . mysqli_error($conn);
+            
+        }
+
     }
 
 
-    Closecon($conn);
 
-?>
 
-</body>
-</div>
 
+
+
+
+  ?>
+
+
+    </body>
 </html>
